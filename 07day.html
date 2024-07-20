@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<head>
+
+    <title>07day</title>
+</head>
+
+<body>
+    <script>
+        let book = {
+            title: "Think and grow rich",
+            author: "Nepolian Hill",
+            year: 1932,
+            getDetails: function () {
+                return `${this.title} by ${this.author}`;
+            },
+            changeYear: function(newYear){
+                this.year = newYear;
+                return this.year;
+            },
+            titleAndyear: function(newYear){
+                return `${this.title} ${this.year}`;
+            }
+        }
+        console.log(book);
+        console.log(book.title, book.author);
+        console.log(book.getDetails());
+        console.log(book.changeYear(1949));
+
+        // Activity three
+            let library = {
+                book1:{
+                    title:book.title,
+                    author:book.author,
+                    year:book.year
+                },
+                name:{
+                    name1:"The 5 am club",
+                    name2:"The alchemist",
+
+                }
+            }
+            console.log(library);
+            console.log(library.name.name1);
+            console.log(library.name.name2);
+            console.log(library.book1);
+
+            //Activity four
+            console.log(book.titleAndyear());
+
+            // Activity five
+            for (element in book){
+                console.log(book[element]);
+            }
+
+            console.log(Object.keys(book));
+            console.log(Object.values(book));
+            
+    </script>
+</body>
+
+</html>
