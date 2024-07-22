@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Day 10</title>
+    </head>
+    <body>
+        <p id="ptag">
+            Hi click this
+        </p>
+        <img id="pfp" src="https://avatars.githubusercontent.com/u/117350475?s=96&v=4" alt="">
+
+        <p id="bgcolor">
+            HOver your mouse to change the background color
+        </p>
+
+        <input type="text" id="input">
+        <p id="display"></p>
+
+        <h2>form event and prevent default </h2>
+        <form action="" id="frm">
+            <input id="uvalue" type="text">
+            <input 
+           id="subbtn" type="submit" value="submit">
+        </form>
+
+
+        <select id="dropdown">
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+        </select>
+
+
+        <p id="selectedValue"></p>
+
+
+        <ul id="list">
+            <li>List Item 1</li>
+            <li>List Item 2</li>
+            <li>List Item 3</li>
+        </ul>
+
+
+
+
+        <div id="parent">
+            <!-- Add child elements dynamically -->
+            <button>Button 1</button>
+            <button>Button 2</button>
+            <button>Button 3</button>
+        </div>
+        <script>
+            
+            //Activity one  : 
+        let ptag = document.getElementById('ptag');
+        ptag.addEventListener('click', function() {
+            ptag.innerText = 'You clikem me!';
+        });
+        
+        let pfp = document.getElementById('pfp');
+        pfp.addEventListener('dblclick', function() {
+            this.style.width = '200px';
+            this.style.height = '200px';
+        });
+        //Activity two  :
+        let bgcolor = document.getElementById('bgcolor');
+        bgcolor.addEventListener('mouseover', function() {
+            this.style.backgroundColor = 'yellow';
+        });
+        bgcolor.addEventListener('mouseout', function() {
+            this.style.backgroundColor = 'white';
+        });
+        
+        // //Activity three  :
+
+        let inn = document.getElementById('input');
+        inn.addEventListener('keydown', function(e) {
+                console.log(e.key);
+                document.getElementById('display').innerText = 'Last pressed key :'+ e.key;
+                
+        })
+
+        //Activity four :
+
+        let subbtn = document.getElementById('frm');
+        subbtn.addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log(document.getElementById('uvalue').value);
+        })
+
+        const dropdown = document.getElementById('dropdown');
+        const selectedValue = document.getElementById('selectedValue');
+
+        dropdown.addEventListener('change', function() {
+                // Update the paragraph text with the selected value
+                selectedValue.textContent = 'Selected value: ' + dropdown.value;
+            });
+
+            //Activity five :
+
+            const list = document.getElementById('list');
+
+
+
+            list.addEventListener('click', function(event) {
+                // Check if the clicked element is a list item
+                if (event.target.tagName === 'LI') {
+                    // Update the text content of the clicked list item
+                    event.target.textContent = 'Clicked: ' + event.target.textContent;
+                }
+            });
+
+            const parent = document.getElementById('parent');
+
+            // Add an event listener to the parent element
+            parent.addEventListener('click', function(event) {
+                // Check if the clicked element is a button
+                if (event.target.tagName === 'BUTTON') {
+                    // Handle the event (e.g., display an alert)
+                    alert('Clicked button: ' + event.target.textContent);
+                }
+            });
+
+            // Add dynamically added child elements
+            const newButton = document.createElement('button');
+            newButton.textContent = 'New Button';
+            parent.appendChild(newButton);
+
+    </script>
+</body>
+</html>
