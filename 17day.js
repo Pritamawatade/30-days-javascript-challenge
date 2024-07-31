@@ -220,3 +220,128 @@ console.log('Front item = '+printer.queue.front()); // Output: null
 
 // activity four 
 
+// implement a Treenode class to represt a node in binary tree with properties value , left , right 
+
+class TreeNode {
+    constructor(value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
+    }
+}   
+// Binary tree class to inserting values and performing inorder travsel 
+
+class BinaryTree {
+    constructor() {
+        this.root = null;
+    }
+    // method to insert a new node in the binary tree
+    insert(value) {
+        const newNode = new TreeNode(value);
+        if (!this.root) {
+            this.root = newNode;
+        } else {
+            this._insertNode(this.root, newNode);
+        }
+        return this;   
+    }
+    // method to perform inorder traversal of the binary tree
+    inorderTraversal() {
+        this._inorderTraversal(this.root);
+        console.log();
+    }
+    _insertNode(node, newNode) {
+        if (newNode.value < node.value) {
+            if (!node.left) {
+                node.left = newNode;
+            } else {
+                this._insertNode(node.left, newNode);
+            }
+        } else {
+            if (!node.right) {
+                node.right = newNode;
+            } else {
+                this._insertNode(node.right, newNode);
+            }
+        }
+    }
+    _inorderTraversal(node) {
+        if (node) {
+            this._inorderTraversal(node.left);
+            console.log(node.value);
+            this._inorderTraversal(node.right);
+        }
+    }
+}
+
+// example usage:
+
+const tree = new BinaryTree();
+tree.insert(10);
+tree.insert(5);
+tree.insert(15);
+tree.insert(3);
+
+console.log('Inorder traversal:');
+
+tree.inorderTraversal(); // Output: 3 5 10 15
+
+
+// activity five 
+// impement the graph class with methods to add vertices , add edges and perform a BFS
+
+class Graph {
+    constructor() {
+        this.vertices = [];
+        this.adjacencyList = {};
+    }
+    // method to add a new vertex to the graph
+    addVertex(vertex) {
+        this.vertices.push(vertex);
+        this.adjacencyList[vertex] = [];
+    }
+    // method to add an edge between two vertices in the graph
+    addEdge(vertex1, vertex2) {
+        this.adjacencyList[vertex1].push(vertex2);
+        this.adjacencyList[vertex2].push(vertex1);
+    }
+    // method to perform a breadth-first search starting from a given vertex
+    breadthFirstSearch(startVertex) {
+        const visited = {};
+        const queue = [];
+        for (let vertex of this.vertices) {
+            visited[vertex] = false;
+        }
+        visited[startVertex] = true;
+        queue.push(startVertex);
+        while (queue.length > 0) {
+            const currentVertex = queue.shift();
+            console.log(currentVertex);
+            for (let neighbor of this.adjacencyList[currentVertex]) {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    queue.push(neighbor);
+                }
+            }
+        }
+        return this;
+    }
+}
+
+// example usage:
+
+const graph = new Graph();
+
+graph.addVertex('A');
+graph.addVertex('B');
+graph.addVertex('C');
+
+graph.addEdge('A', 'B');
+
+graph.addEdge('A', 'C');
+
+console.log('Breadth-first search from vertex A:');
+
+graph.breadthFirstSearch('A'); // Output: A B C
+
+
