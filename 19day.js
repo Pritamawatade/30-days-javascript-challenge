@@ -103,4 +103,4 @@ function validateURL(url) {
 console.log(validateURL("https://www.example.com")); // true
 console.log(validateURL("http://example")); // false
 console.log(validateURL("www.example.com")); // false
-console.log(validateURL("example.com")); // true
+console.log(validateURL("example.com"));
