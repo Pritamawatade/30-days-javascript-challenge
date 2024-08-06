@@ -344,4 +344,3 @@ console.log('Breadth-first search from vertex A:');
 
 graph.breadthFirstSearch('A'); // Output: A B C
 
-
