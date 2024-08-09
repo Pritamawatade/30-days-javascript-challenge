@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local Storage Example</title>
+  </head>
+  <body>
+    <h1>Enter you details</h1>
+    <form id="demoform">
+      <input type="text" name="name" id="name" />
+      <input type="email" name="name" id="email" />
+      <button type="submit" value="submit" />
+    </form>
+    <script>
+      const form = document.getElementById("demoform");
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        localStorage.setItem("name", name);
+        localStorage.setItem("email", email);
+        console.log(localStorage.getItem("name"));
+        console.log(localStorage.getItem("email")); // Output: email@example.com
+      });
+
+      let val = "pritam";
+      localStorage.setItem("pritam", val);
+      console.log(localStorage.getItem("pritam")); // Output: pritam
+
+      // • Task 2: Write a script to save an object to local!
+      //      ring. Retrieve and parse the object, then log it.
+      let obj = { name: "Pritam", age: 23 };
+      localStorage.setItem("pritamObj", JSON.stringify(obj));
+      let retrievedObj = JSON.parse(localStorage.getItem("pritamObj"));
+      console.log(retrievedObj); // Output: { name: 'Pritam', age: 23 }
+
+      // Task 4 : how to remove content from the local storage
+
+      console.log("LocalStorage before the item is removed");
+
+      console.log(localStorage); // Output: { name: 'pritam', email: 'email@example.com', pritamObj: '{"name":"Pritam","age":23}' }
+
+      localStorage.removeItem("pritamObj"); // Remove
+      console.log("LocalStorage after the item is removed");
+
+      console.log(localStorage); // Output: { name: 'pritam', email: 'email@example.com' }
+
+      // Activity 3  ;
+      //    task 5 : add and remove item in session storage
+      sessionStorage.setItem("sessionName", "Hitesh sir");
+      console.log(sessionStorage.getItem("sessionName")); // Output: John Doe
+      sessionStorage.removeItem("sessionName"); // Remove
+      console.log(sessionStorage.getItem("sessionName")); // Output: null
+    </script>
+  </body>
+</html>
